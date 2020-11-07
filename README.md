@@ -5,7 +5,7 @@
 We will create a new customer attribute called "Blocked", it will have two options (Yes/No). If this attribute is set to "Yes" when a customer tries to log in, they will get an inform similar to this "Your account is blocked for the security reason, please contact us for details."
 
 # Screenshot
-![ScreenShot](https://github.com/php-cuong/customer-login/blob/master/Screenshot/lock-a-customer-account.gif)
+![ScreenShot](https://github.com/php-cuong/customer-login/blob/main/Screenshot/lock-a-customer-account.gif)
 
 # See the video How to lock a customer account in magento 2 here.
 https://www.youtube.com/watch?v=tBGagDLXUAQ&list=PL98CDCbI3TNvPczWSOnpaMoyxVISLVzYQ
