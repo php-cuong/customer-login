@@ -6,6 +6,10 @@ We will create a new customer attribute called "Blocked", it will have two optio
 
 # Screenshot
 ![ScreenShot](https://github.com/php-cuong/customer-login/blob/main/Screenshot/lock-a-customer-account.gif)
+![ScreenShot](https://github.com/php-cuong/customer-login/blob/main/Screenshot/muiltiple-rows.gif)
 
 # See the video How to lock a customer account in magento 2 here.
 https://www.youtube.com/watch?v=tBGagDLXUAQ&list=PL98CDCbI3TNvPczWSOnpaMoyxVISLVzYQ
+
+# How to add a new dynamic row system configuration in the Magento 2 admin.
+https://www.youtube.com/watch?v=GZ-I9SdGLT0&list=PL98CDCbI3TNvPczWSOnpaMoyxVISLVzYQ
