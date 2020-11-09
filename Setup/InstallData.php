@@ -65,6 +65,7 @@ class InstallData implements InstallDataInterface
         $customerSetup = $this->customerSetupFactory->create(['setup' => $setup]);
 
         $this->addCustomerAttribute($customerSetup, 'login_status', 1000, 'Blocked', '0', 'boolean', 'int');
+        $this->addCustomerAttribute($customerSetup, 'reason', 1090, 'Reason', '0', 'select', 'varchar');
     }
 
     /**
@@ -94,7 +95,12 @@ class InstallData implements InstallDataInterface
             $customerEntity = $customerSetup->getEavConfig()->getEntityType(Customer::ENTITY);
             $attributeSetId = $customerEntity->getDefaultAttributeSetId();
             $boolean = true;
+            // This is for the "login_status" customer attribute
             $source = 'Magento\Eav\Model\Entity\Attribute\Source\Boolean';
+            // This is for the "reason" customer attribute
+            if ($customerAttributeCode == 'reason') {
+                $source = 'PHPCuong\CustomerLogin\Model\Customer\Attribute\Source\Reason';
+            }
             /** @var $attributeSet AttributeSet */
             $attributeSet = $this->attributeSetFactory->create();
             $attributeGroupId = $attributeSet->getDefaultGroupId($attributeSetId);

@@ -38,5 +38,16 @@
                 <visible>true</visible>
             </settings>
         </field>
+        <field name="reason" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">customer</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <visible>true</visible>
+            </settings>
+        </field>
     </fieldset>
 </form>

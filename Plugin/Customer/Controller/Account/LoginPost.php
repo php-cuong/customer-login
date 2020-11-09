@@ -61,12 +61,18 @@ class LoginPost
     protected $messageManager;
 
     /**
+     * @var \PHPCuong\CustomerLogin\Model\Customer\Attribute\Source\Reason
+     */
+    protected $reasonsList;
+
+    /**
      * @param Session $customerSession
      * @param AccountManagementInterface $customerAccountManagement
      * @param ResponseFactory $responseFactory
      * @param UrlInterface $url
      * @param RequestInterface $request
      * @param ManagerInterface $messageManager
+     * @param \PHPCuong\CustomerLogin\Model\Customer\Attribute\Source\Reason $reasonsList
      */
     public function __construct(
         Session $customerSession,
@@ -74,7 +80,8 @@ class LoginPost
         ResponseFactory $responseFactory,
         UrlInterface $url,
         RequestInterface $request,
-        ManagerInterface $messageManager
+        ManagerInterface $messageManager,
+        \PHPCuong\CustomerLogin\Model\Customer\Attribute\Source\Reason $reasonsList
     ) {
         $this->session = $customerSession;
         $this->customerAccountManagement = $customerAccountManagement;
@@ -82,6 +89,7 @@ class LoginPost
         $this->url = $url;
         $this->request = $request;
         $this->messageManager = $messageManager;
+        $this->reasonsList = $reasonsList;
     }
 
     /**
@@ -103,9 +111,14 @@ class LoginPost
                         // If the customer is blocked, 1 is locked, 0 is unlocked
                         if ($loginStatus && $loginStatus->getValue() == '1') {
                             // Display the reason
-                            // You can create a customization message here
+                            $reasonCode = $customer->getCustomAttribute('reason');
+                            $reasonValue = '';
+                            if (!empty($reasonCode)) {
+                                $reasonValue = $reasonCode->getValue();
+                            }
+                            // Display the reason
                             $this->messageManager->addError(
-                                __('Your account is blocked for the security reason, please contact us for details.')
+                                __('Your account is blocked for the following reason: %1', $this->reasonsList->getMessage($reasonValue))
                             );
                             $resultRedirect = $this->responseFactory->create();
                             // Redirect to the customer login page
