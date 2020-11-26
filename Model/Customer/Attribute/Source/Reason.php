@@ -54,7 +54,7 @@ class Reason extends \Magento\Eav\Model\Entity\Attribute\Source\Table
     ) {
         $this->scopeConfig = $scopeConfig;
         $this->serialize = $serialize;
-        parent::__construct($attrOptionCollectionFactory, $attrOptionFactory, $escaper);
+        parent::__construct($attrOptionCollectionFactory, $attrOptionFactory);
     }
 
     /**
